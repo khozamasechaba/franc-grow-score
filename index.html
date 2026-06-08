@@ -6,6 +6,7 @@
 <title>Franc — Grow Score</title>
 <style>
   :root {
+<<<<<<< HEAD
     --orange:#E84E1B;--orange-light:#FBE9E3;--orange-dark:#C43E13;
     --green:#1DB89A;--green-light:#E8F9F5;--green-dark:#158A72;
     --bg:#F0F2F5;--white:#FFFFFF;--dark:#1A1A2E;--grey:#8A94A6;
@@ -184,10 +185,336 @@
   .tag-d{background:rgba(29,184,154,.2);color:#1DB89A}
   hr.divider{border:none;border-top:1px solid rgba(255,255,255,.1);margin:8px 0 14px}
   @media(max-width:760px){.side-panel{display:none}}
+=======
+    --orange: #E84E1B;
+    --orange-light: #FBE9E3;
+    --orange-dark: #C43E13;
+    --green: #1DB89A;
+    --green-light: #E8F9F5;
+    --green-dark: #158A72;
+    --bg: #F0F2F5;
+    --white: #FFFFFF;
+    --dark: #1A1A2E;
+    --grey: #8A94A6;
+    --border: #E5E8EE;
+    --boost-dark: #1C1E2E;
+    --amber: #F59E0B;
+    --amber-light: #FEF3C7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Phone shell ─────────────────────────────────── */
+  .phone {
+    width: 390px;
+    height: 844px;
+    background: var(--white);
+    border-radius: 44px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 0 10px #1a1a1a, 0 0 0 12px #333, 0 30px 80px rgba(0,0,0,0.7);
+    flex-shrink: 0;
+  }
+  .screen {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .screen.active { display: flex; }
+  .screen.slide-in { animation: slideIn 0.22s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+  .screen.slide-back { animation: slideBack 0.22s cubic-bezier(0.25,0.46,0.45,0.94) both; }
+  @keyframes slideIn { from { transform: translateX(100%); } to { transform: none; } }
+  @keyframes slideBack { from { transform: translateX(-30%); opacity:0.5; } to { transform: none; opacity:1; } }
+
+  .scroll-area { flex:1; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; }
+  .scroll-area::-webkit-scrollbar { display:none; }
+
+  /* ── Status bar ──────────────────────────────────── */
+  .status-bar {
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 14px 24px 6px; font-size:15px; font-weight:600; flex-shrink:0;
+  }
+  .status-bar.light { color: white; }
+  .status-icons { display:flex; gap:6px; align-items:center; }
+  .battery { border:1.5px solid currentColor; border-radius:3px; width:22px; height:12px; position:relative; display:flex; align-items:center; padding:1.5px; }
+  .battery::after { content:''; position:absolute; right:-4px; top:50%; transform:translateY(-50%); width:2px; height:5px; background:currentColor; border-radius:0 1px 1px 0; }
+  .battery-fill { background:currentColor; height:100%; border-radius:1px; width:100%; }
+
+  /* ── Bottom nav ──────────────────────────────────── */
+  .nav-bar { display:flex; justify-content:space-around; padding:8px 0 24px; border-top:0.5px solid var(--border); background:var(--white); flex-shrink:0; }
+  .nav-item { display:flex; flex-direction:column; align-items:center; gap:3px; cursor:pointer; opacity:0.45; padding:4px 16px; }
+  .nav-item.active { opacity:1; color: var(--orange); }
+  .nav-item svg { width:24px; height:24px; }
+  .nav-item span { font-size:10px; }
+
+  /* ── SPLASH ──────────────────────────────────────── */
+  #splash { background:var(--orange); align-items:center; justify-content:center; }
+  .splash-logo { display:flex; flex-direction:column; align-items:center; gap:16px; animation: fadeUp 0.6s ease both; }
+  .splash-icon { width:100px; height:100px; background:rgba(255,255,255,0.2); border-radius:22px; display:flex; align-items:center; justify-content:center; }
+  .splash-wordmark { font-size:38px; font-weight:800; color:white; letter-spacing:-1px; }
+  .splash-tagline { font-size:16px; color:rgba(255,255,255,0.8); }
+  .splash-fsp { position:absolute; bottom:48px; font-size:13px; color:rgba(255,255,255,0.6); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+  /* ── HOME ────────────────────────────────────────── */
+  .home-topbar { display:flex; justify-content:space-between; align-items:center; padding:8px 20px 12px; }
+  .coins-row { display:flex; align-items:center; gap:6px; font-size:18px; font-weight:700; color:var(--dark); }
+  .top-icons { display:flex; gap:16px; }
+  .top-icon-btn { position:relative; background:none; border:none; cursor:pointer; padding:4px; }
+  .notif-dot { position:absolute; top:2px; right:2px; width:8px; height:8px; background:var(--green); border-radius:50%; border:1.5px solid white; }
+  .starter-badge { display:inline-block; background:var(--green); color:white; font-size:12px; font-weight:700; letter-spacing:.05em; padding:5px 14px; border-radius:20px; margin:0 20px 10px; }
+  .portfolio-section { padding:0 20px 20px; }
+  .portfolio-label { font-size:20px; font-weight:700; color:var(--dark); }
+  .portfolio-since { font-size:14px; color:var(--grey); margin-top:2px; font-style:italic; }
+  .portfolio-value { font-size:40px; font-weight:800; color:var(--dark); margin-top:6px; letter-spacing:-1px; }
+
+  .action-bar { background:var(--orange); border-radius:18px; margin:0 20px 16px; display:flex; justify-content:space-around; padding:18px 8px; }
+  .action-btn { display:flex; flex-direction:column; align-items:center; gap:8px; background:none; border:none; color:white; cursor:pointer; }
+  .action-btn svg { width:22px; height:22px; }
+  .action-btn span { font-size:13px; font-weight:600; }
+
+  /* ── Grow Score nudge — personalised ────────────── */
+  .gs-nudge {
+    margin:0 20px 16px;
+    background: linear-gradient(135deg, #E84E1B 0%, #C43E13 100%);
+    border-radius:18px; padding:20px; cursor:pointer;
+    transition:transform 0.12s;
+    position:relative; overflow:hidden;
+  }
+  .gs-nudge:active { transform:scale(0.98); }
+  .gs-nudge::before {
+    content:''; position:absolute; top:-30px; right:-30px;
+    width:120px; height:120px; border-radius:50%;
+    background:rgba(255,255,255,0.06);
+  }
+  .gs-nudge::after {
+    content:''; position:absolute; bottom:-20px; right:30px;
+    width:80px; height:80px; border-radius:50%;
+    background:rgba(255,255,255,0.04);
+  }
+  .gs-nudge-chip { display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,0.2); color:white; font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; margin-bottom:12px; letter-spacing:.04em; }
+  .gs-nudge-greeting { font-size:17px; font-weight:800; color:white; margin-bottom:6px; line-height:1.35; }
+  .gs-nudge-body { font-size:13px; color:rgba(255,255,255,0.85); line-height:1.55; margin-bottom:14px; }
+  .gs-nudge-cta { display:inline-flex; align-items:center; gap:6px; background:white; color:var(--orange); font-size:14px; font-weight:700; padding:10px 18px; border-radius:12px; border:none; cursor:pointer; }
+
+  .boost-card { margin:0 20px 16px; background:var(--boost-dark); border-radius:16px; padding:18px; position:relative; }
+  .boost-badge { position:absolute; top:-10px; right:16px; background:var(--green); color:white; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; }
+  .boost-time { position:absolute; top:18px; right:18px; font-size:12px; color:var(--grey); }
+  .boost-title { font-size:15px; font-weight:700; color:white; margin-bottom:6px; }
+  .boost-body { font-size:13px; color:rgba(255,255,255,0.7); line-height:1.5; margin-bottom:10px; }
+  .boost-link { font-size:14px; font-weight:600; color:var(--green); }
+  .section-label { font-size:14px; font-weight:600; color:var(--grey); padding:0 20px 10px; }
+  .savings-card { margin:0 20px; background:var(--white); border-radius:16px; padding:16px; border:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+  .savings-name { font-size:15px; font-weight:600; color:var(--dark); }
+  .savings-sub { font-size:13px; color:var(--grey); margin-top:2px; }
+  .savings-val { font-size:18px; font-weight:700; color:var(--dark); }
+
+  /* ── QUIZ shared ─────────────────────────────────── */
+  .quiz-header { background:var(--orange); padding:20px 20px 28px; color:white; flex-shrink:0; }
+  .quiz-back { background:none; border:none; color:white; cursor:pointer; font-size:26px; margin-bottom:10px; display:block; line-height:1; }
+  .quiz-progress-row { display:flex; gap:5px; margin-bottom:14px; }
+  .quiz-prog-dot { flex:1; height:4px; border-radius:2px; background:rgba(255,255,255,0.3); transition:background 0.3s; }
+  .quiz-prog-dot.done { background:white; }
+  .quiz-screen-label { font-size:12px; opacity:0.8; margin-bottom:6px; font-weight:600; letter-spacing:.04em; }
+  .quiz-title { font-size:21px; font-weight:800; line-height:1.3; }
+  .quiz-subtitle { font-size:13px; color:rgba(255,255,255,0.75); margin-top:6px; line-height:1.5; }
+
+  .quiz-body { flex:1; padding:20px; overflow-y:auto; }
+  .quiz-option {
+    width:100%; text-align:left; padding:15px 16px;
+    background:var(--bg); border:1.5px solid var(--border);
+    border-radius:14px; font-size:14px; font-weight:500; color:var(--dark);
+    cursor:pointer; margin-bottom:10px; transition:all 0.12s;
+    display:flex; align-items:center; gap:12px;
+  }
+  .quiz-option:active { transform:scale(0.99); }
+  .quiz-option.selected { border-color:var(--orange); background:var(--orange-light); color:var(--orange); font-weight:600; }
+  .quiz-option-icon { font-size:20px; flex-shrink:0; width:28px; text-align:center; }
+  .quiz-option-text { flex:1; }
+  .quiz-option-sub { font-size:11px; color:var(--grey); margin-top:2px; font-weight:400; }
+  .quiz-option.selected .quiz-option-sub { color: rgba(232,78,27,0.7); }
+  .quiz-cta {
+    width:100%; padding:18px; background:var(--orange); color:white;
+    border:none; border-radius:16px; font-size:16px; font-weight:700;
+    cursor:pointer; margin-top:4px; transition:opacity 0.15s;
+  }
+  .quiz-cta:active { opacity:0.85; }
+
+  /* context strip in quiz header */
+  .context-strip {
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.15); border-radius:10px;
+    padding:8px 12px; margin-bottom:14px;
+    font-size:12px; color:rgba(255,255,255,0.9);
+  }
+  .context-strip strong { color:white; font-weight:700; }
+
+  /* ── SCORE SCREEN ────────────────────────────────── */
+  .score-hero { background:var(--orange); padding:20px 20px 48px; color:white; flex-shrink:0; }
+  .score-back { background:none; border:none; color:white; cursor:pointer; font-size:26px; display:block; line-height:1; margin-bottom:10px; }
+  .score-hero-label { font-size:12px; opacity:0.8; margin-bottom:4px; font-weight:600; letter-spacing:.04em; }
+  .score-hero-name { font-size:22px; font-weight:800; }
+
+  .score-body { flex:1; overflow-y:auto; background:var(--bg); }
+  .score-card {
+    margin:-28px 16px 0; background:white; border-radius:20px;
+    padding:22px; border:1px solid var(--border);
+    box-shadow:0 4px 24px rgba(0,0,0,0.08); margin-bottom:14px;
+  }
+  .score-ring-wrap { display:flex; flex-direction:column; align-items:center; margin-bottom:18px; }
+  .score-ring { position:relative; width:150px; height:150px; }
+  .score-ring svg { width:150px; height:150px; transform:rotate(-90deg); }
+  .score-ring-num { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+  .score-ring-num .big { font-size:46px; font-weight:800; line-height:1; }
+  .score-ring-num .small { font-size:12px; color:var(--grey); }
+  .score-level-badge { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:700; padding:5px 14px; border-radius:20px; margin-top:10px; }
+
+  /* personalised insight box */
+  .score-insight {
+    background: linear-gradient(135deg, #FBE9E3, #FEF3C7);
+    border-radius:14px; padding:14px 16px; margin-bottom:16px;
+    border-left:3px solid var(--orange);
+  }
+  .score-insight-label { font-size:11px; font-weight:700; color:var(--orange); margin-bottom:4px; letter-spacing:.04em; }
+  .score-insight-text { font-size:13px; color:var(--dark); line-height:1.55; }
+
+  .gap-list { margin-bottom:16px; }
+  .gap-item { display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--dark); }
+  .gap-item:last-child { border-bottom:none; }
+  .gap-check { width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; font-weight:700; }
+  .gap-check.ok { background:var(--green-light); color:var(--green-dark); }
+  .gap-check.missing { background:#FEE2E2; color:#DC2626; }
+  .gap-item-label { flex:1; }
+  .gap-item-sub { font-size:11px; color:var(--grey); margin-top:1px; }
+  .gap-weight { font-size:11px; font-weight:600; color:var(--grey); }
+
+  .score-cta { width:100%; padding:18px; background:var(--orange); color:white; border:none; border-radius:16px; font-size:16px; font-weight:700; cursor:pointer; }
+
+  .score-breakdown-card {
+    margin:0 16px 14px; background:white; border-radius:16px;
+    padding:18px; border:1px solid var(--border);
+  }
+  .score-breakdown-title { font-size:13px; font-weight:700; color:var(--dark); margin-bottom:12px; }
+  .breakdown-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .breakdown-label { font-size:12px; color:var(--grey); width:110px; flex-shrink:0; }
+  .breakdown-bar-bg { flex:1; height:6px; background:var(--bg); border-radius:3px; }
+  .breakdown-bar-fill { height:6px; border-radius:3px; background:var(--orange); transition:width 0.6s ease; }
+  .breakdown-val { font-size:12px; font-weight:600; color:var(--dark); width:36px; text-align:right; }
+
+  /* ── RECO SCREEN ─────────────────────────────────── */
+  .reco-hero { background:var(--orange); padding:20px 20px 48px; color:white; flex-shrink:0; }
+  .reco-back { background:none; border:none; color:white; cursor:pointer; font-size:26px; display:block; line-height:1; margin-bottom:10px; }
+  .reco-hero-label { font-size:12px; opacity:0.8; margin-bottom:4px; font-weight:600; letter-spacing:.04em; }
+  .reco-hero-title { font-size:22px; font-weight:800; }
+
+  .reco-body { flex:1; overflow-y:auto; background:var(--bg); }
+
+  .reco-card {
+    margin:-28px 16px 0; background:white; border-radius:20px;
+    padding:22px; border:2px solid var(--orange);
+    box-shadow:0 4px 24px rgba(0,0,0,0.08); margin-bottom:14px;
+  }
+  .reco-match-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .reco-match-badge { background:var(--orange-light); color:var(--orange); font-size:12px; font-weight:700; padding:5px 12px; border-radius:20px; }
+  .reco-match-pct { font-size:22px; font-weight:800; color:var(--orange); }
+
+  .reco-product-row { display:flex; align-items:center; gap:14px; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border); }
+  .reco-product-icon { width:54px; height:54px; border-radius:14px; background:var(--orange-light); display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0; }
+  .reco-product-name { font-size:20px; font-weight:800; color:var(--dark); }
+  .reco-product-type { font-size:12px; color:var(--grey); margin-top:2px; }
+
+  /* ── WHY THIS FOR YOU — personalised ────────────── */
+  .why-you-box {
+    background: linear-gradient(135deg, var(--green-light), #E8F9F5);
+    border-radius:14px; padding:14px 16px; margin-bottom:16px;
+    border-left:3px solid var(--green);
+  }
+  .why-you-label { font-size:11px; font-weight:700; color:var(--green-dark); margin-bottom:6px; letter-spacing:.04em; }
+  .why-you-text { font-size:13px; color:var(--dark); line-height:1.6; }
+  .why-you-text strong { color:var(--green-dark); }
+
+  .reco-facts { display:flex; flex-direction:column; gap:9px; margin-bottom:20px; }
+  .reco-fact { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--dark); line-height:1.4; }
+  .reco-fact-icon { font-size:16px; width:24px; text-align:center; flex-shrink:0; margin-top:1px; }
+
+  .reco-amount-row { background:var(--bg); border-radius:12px; padding:14px 16px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
+  .reco-amount-label { font-size:13px; color:var(--grey); }
+  .reco-amount-val { font-size:20px; font-weight:800; color:var(--dark); }
+  .reco-amount-sub { font-size:11px; color:var(--green-dark); font-weight:600; margin-top:2px; }
+
+  .reco-invest-btn { width:100%; padding:18px; background:var(--orange); color:white; border:none; border-radius:16px; font-size:16px; font-weight:700; cursor:pointer; margin-bottom:10px; transition:opacity .15s; }
+  .reco-invest-btn:active { opacity:0.85; }
+  .reco-alt-btn { width:100%; padding:13px; background:transparent; color:var(--grey); border:1.5px solid var(--border); border-radius:14px; font-size:14px; cursor:pointer; }
+
+  /* ── SUCCESS ──────────────────────────────────────── */
+  .success-wrap { flex:1; display:flex; flex-direction:column; align-items:center; padding:36px 22px 22px; text-align:center; overflow-y:auto; }
+  .success-emoji { font-size:64px; margin-bottom:14px; animation:pop 0.4s cubic-bezier(0.68,-0.55,0.265,1.55) both; }
+  @keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
+  .success-title { font-size:24px; font-weight:800; color:var(--dark); margin-bottom:6px; }
+  .success-sub { font-size:14px; color:var(--grey); margin-bottom:24px; line-height:1.5; }
+
+  .score-delta-card {
+    width:100%; background:var(--bg); border-radius:20px;
+    padding:20px 24px; margin-bottom:16px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .sd-old { text-align:center; }
+  .sd-new { text-align:center; }
+  .sd-num { font-size:38px; font-weight:800; line-height:1; }
+  .sd-lbl { font-size:11px; color:var(--grey); margin-top:2px; }
+  .sd-delta { font-size:12px; font-weight:700; color:var(--green-dark); background:var(--green-light); padding:3px 9px; border-radius:10px; margin-top:4px; display:inline-block; }
+  .sd-arrow { flex:1; font-size:26px; color:var(--green); text-align:center; }
+
+  /* personalised next step card */
+  .next-step-card { width:100%; background:white; border-radius:16px; padding:16px 18px; margin-bottom:16px; border:1px solid var(--border); text-align:left; }
+  .next-step-label { font-size:11px; font-weight:700; color:var(--orange); margin-bottom:10px; letter-spacing:.04em; }
+  .next-step-item { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--dark); padding:7px 0; border-bottom:1px solid var(--border); }
+  .next-step-item:last-child { border-bottom:none; }
+  .next-step-item.locked { color:var(--grey); }
+  .next-step-item.earned { color:var(--green-dark); font-weight:600; }
+  .ns-icon { width:22px; text-align:center; flex-shrink:0; }
+
+  .success-cta { width:100%; padding:18px; background:var(--orange); color:white; border:none; border-radius:16px; font-size:16px; font-weight:700; cursor:pointer; }
+
+  /* ── Side panel (desktop) ────────────────────────── */
+  .side-panel {
+    width: 300px;
+    color: rgba(255,255,255,0.85);
+    font-family: -apple-system, sans-serif;
+    flex-shrink:0;
+    align-self: center;
+  }
+  .side-panel h2 { font-size:22px; font-weight:800; color:white; margin-bottom:6px; }
+  .side-panel p { font-size:13px; line-height:1.7; color:rgba(255,255,255,0.65); margin-bottom:20px; }
+  .side-step { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; cursor:pointer; opacity:0.5; transition:opacity 0.2s; }
+  .side-step.active { opacity:1; }
+  .side-step-num { width:26px; height:26px; border-radius:50%; background:var(--orange); color:white; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .side-step-num.done { background:var(--green); }
+  .side-step-content {}
+  .side-step-title { font-size:13px; font-weight:700; color:white; margin-bottom:2px; }
+  .side-step-desc { font-size:12px; color:rgba(255,255,255,0.5); line-height:1.5; }
+  .personalisation-tag { display:inline-block; background:rgba(232,78,27,0.25); color:#F9A07A; font-size:10px; font-weight:700; padding:2px 8px; border-radius:8px; margin-top:4px; letter-spacing:.04em; }
+
+  @media (max-width: 760px) { .side-panel { display: none; } }
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
 </style>
 </head>
 <body>
 
+<<<<<<< HEAD
 <div class="side-panel">
   <h2>Grow Score</h2>
   <p>Two entry points into the feature. Tap any step to jump to it.</p>
@@ -234,15 +561,107 @@
 
 <div class="phone">
 
+=======
+<!-- ── Side panel ─────────────────────────────────────────────────── -->
+<div class="side-panel">
+  <h2>Grow Score</h2>
+  <p>Tap through the personalised flow. Each screen adapts to the user's answers and existing data.</p>
+
+  <div class="side-step active" id="step-splash" onclick="goto('splash')">
+    <div class="side-step-num">1</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Splash</div>
+      <div class="side-step-desc">App loads</div>
+    </div>
+  </div>
+  <div class="side-step" id="step-home" onclick="goto('home')">
+    <div class="side-step-num">2</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Home screen</div>
+      <div class="side-step-desc">Grow Score nudge references user's name & existing goal</div>
+      <span class="personalisation-tag">PERSONALISED</span>
+    </div>
+  </div>
+  <div class="side-step" id="step-quiz1" onclick="goto('quiz1')">
+    <div class="side-step-num">3</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Quiz — Priority</div>
+      <div class="side-step-desc">Answer drives which Q2 the user sees</div>
+      <span class="personalisation-tag">ADAPTIVE</span>
+    </div>
+  </div>
+  <div class="side-step" id="step-quiz2" onclick="goto('quiz2')">
+    <div class="side-step-num">4</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Quiz — Timeline</div>
+      <div class="side-step-desc">Q2 adapts: retirement → age bracket, other → horizon</div>
+      <span class="personalisation-tag">ADAPTIVE</span>
+    </div>
+  </div>
+  <div class="side-step" id="step-quiz3" onclick="goto('quiz3')">
+    <div class="side-step-num">5</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Quiz — Surplus</div>
+      <div class="side-step-desc">Monthly amount shapes recommendation</div>
+      <span class="personalisation-tag">ADAPTIVE</span>
+    </div>
+  </div>
+  <div class="side-step" id="step-score" onclick="goto('score')">
+    <div class="side-step-num">6</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Grow Score reveal</div>
+      <div class="side-step-desc">Score, gaps, and insight all calculated from answers</div>
+      <span class="personalisation-tag">PERSONALISED</span>
+    </div>
+  </div>
+  <div class="side-step" id="step-reco" onclick="goto('reco')">
+    <div class="side-step-num">7</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Recommendation</div>
+      <div class="side-step-desc">"Why this for you" copy is unique to their goal + timeline</div>
+      <span class="personalisation-tag">PERSONALISED</span>
+    </div>
+  </div>
+  <div class="side-step" id="step-post-deposit" onclick="goto('post-deposit')">
+    <div class="side-step-num">8</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Post-deposit screen</div>
+      <div class="side-step-desc">Grow Score nudge surfaced at peak motivation moment</div>
+      <span class="personalisation-tag">NEW TOUCHPOINT</span>
+    </div>
+  </div>
+  <div class="side-step" id="step-success" style="margin-left:12px;opacity:0.6;" onclick="goto('success')">
+    <div class="side-step-num">9</div>
+    <div class="side-step-content">
+      <div class="side-step-title">Success state</div>
+      <div class="side-step-desc">Score delta + named next unlock for their profile</div>
+      <span class="personalisation-tag">PERSONALISED</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Phone ──────────────────────────────────────────────────────── -->
+<div class="phone">
+
+  <!-- SPLASH -->
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
   <div class="screen active" id="splash">
     <div class="splash-logo">
       <div class="splash-icon">
         <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+<<<<<<< HEAD
           <rect x="6" y="8" width="36" height="44" rx="8" fill="white" fill-opacity=".25"/>
           <circle cx="24" cy="36" r="10" fill="white" fill-opacity=".9"/>
           <circle cx="24" cy="36" r="5" fill="#E84E1B"/>
           <rect x="30" y="14" width="12" height="8" rx="3" fill="white" fill-opacity=".9"/>
           <rect x="34" y="10" width="4" height="6" rx="1" fill="white" fill-opacity=".7"/>
+=======
+          <rect x="6" y="8" width="36" height="44" rx="8" fill="white" fill-opacity="0.25"/>
+          <circle cx="24" cy="36" r="10" fill="white" fill-opacity="0.9"/>
+          <circle cx="24" cy="36" r="5" fill="#E84E1B"/>
+          <rect x="30" y="14" width="12" height="8" rx="3" fill="white" fill-opacity="0.9"/>
+          <rect x="34" y="10" width="4" height="6" rx="1" fill="white" fill-opacity="0.7"/>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
         </svg>
       </div>
       <div class="splash-wordmark">Franc.</div>
@@ -251,6 +670,7 @@
     <div class="splash-fsp">Registered FSP (No. 49998)</div>
   </div>
 
+<<<<<<< HEAD
   <div class="screen" id="home">
     <div class="status-bar"><span>13:33</span><div class="status-icons"><div class="battery"><div class="battery-fill"></div></div><span style="font-size:11px;font-weight:700">100</span></div></div>
     <div class="scroll-area">
@@ -259,6 +679,30 @@
         <div class="top-icons">
           <button class="top-icon-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg><div class="notif-dot"></div></button>
           <button class="top-icon-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg></button>
+=======
+  <!-- HOME -->
+  <div class="screen" id="home">
+    <div class="status-bar">
+      <span>13:33</span>
+      <div class="status-icons">
+        <div class="battery"><div class="battery-fill"></div></div>
+        <span style="font-size:11px;font-weight:700">100</span>
+      </div>
+    </div>
+    <div class="scroll-area">
+      <div class="home-topbar">
+        <div class="coins-row">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/></svg> 0
+        </div>
+        <div class="top-icons">
+          <button class="top-icon-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <div class="notif-dot"></div>
+          </button>
+          <button class="top-icon-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </button>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
         </div>
       </div>
       <div class="starter-badge">STARTER</div>
@@ -267,6 +711,7 @@
         <div class="portfolio-since">Investor since June 2026</div>
         <div class="portfolio-value">R 4,200.00</div>
       </div>
+<<<<<<< HEAD
       <div class="action-bar">
         <button class="action-btn" onclick="goto('post-deposit')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M5 10l7 7 7-7"/><path d="M5 21h14"/></svg><span>Deposit</span>
@@ -289,6 +734,55 @@
       </div>
       <div class="section-label">Savings Account</div>
       <div class="savings-card"><div><div class="savings-name">Emergency Fund</div><div class="savings-sub">Allan Gray Money Market</div></div><div class="savings-val">R 4,200</div></div>
+=======
+
+      <div class="action-bar">
+        <button class="action-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3v12M5 10l7 7 7-7"/><path d="M5 21h14"/></svg>
+          <span>Deposit</span>
+        </button>
+        <button class="action-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>Goal</span>
+        </button>
+        <button class="action-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span>Child</span>
+        </button>
+        <button class="action-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 11c0 4-4 7-4 7s-4-3-4-7a4 4 0 018 0z"/><circle cx="12" cy="11" r="1.5"/><path d="M20 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span>Shared Goal</span>
+        </button>
+      </div>
+
+      <!-- Personalised Grow Score nudge -->
+      <div class="gs-nudge" onclick="goto('quiz1')">
+        <div class="gs-nudge-chip">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          GROW SCORE
+        </div>
+        <div class="gs-nudge-greeting">Your emergency fund is solid, Masechaba 💪</div>
+        <div class="gs-nudge-body">You've been investing for 7 days — you're off to a great start. Now let's see how well-rounded your portfolio really is.</div>
+        <button class="gs-nudge-cta">Check my Grow Score →</button>
+      </div>
+
+      <div class="boost-card">
+        <div class="boost-badge">7</div>
+        <div class="boost-time">6h</div>
+        <div class="boost-title">Last chance to boost ⏱️</div>
+        <div class="boost-body">Make a deposit of R100 or more and we'll give you R25 to boost it.</div>
+        <div class="boost-link">Learn more ›</div>
+      </div>
+
+      <div class="section-label">Savings Account</div>
+      <div class="savings-card">
+        <div>
+          <div class="savings-name">Emergency Fund</div>
+          <div class="savings-sub">Allan Gray Money Market</div>
+        </div>
+        <div class="savings-val">R 4,200</div>
+      </div>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
       <div style="height:20px"></div>
     </div>
     <div class="nav-bar">
@@ -300,17 +794,35 @@
     </div>
   </div>
 
+<<<<<<< HEAD
   <div class="screen" id="quiz1">
     <div class="status-bar" style="background:var(--orange);color:white"><span>13:33</span><div class="status-icons" style="color:white"><div class="battery" style="border-color:white"><div class="battery-fill" style="background:white"></div></div></div></div>
     <div class="quiz-header">
       <button class="quiz-back" onclick="goBack('home')">&#8249;</button>
       <div class="context-strip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Grow Score for <strong>Masechaba</strong> &middot; 1 product active</span></div>
       <div class="quiz-progress-row"><div class="quiz-prog-dot done"></div><div class="quiz-prog-dot"></div><div class="quiz-prog-dot"></div></div>
+=======
+  <!-- QUIZ 1 — Priority -->
+  <div class="screen" id="quiz1">
+    <div class="status-bar light" style="background:var(--orange)"><span>13:33</span><div class="status-icons" style="color:white"><div class="battery" style="border-color:white"><div class="battery-fill" style="background:white"></div></div></div></div>
+    <div class="quiz-header">
+      <button class="quiz-back" onclick="goBack('home')">‹</button>
+      <div class="context-strip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Grow Score for <strong>Masechaba</strong> · 1 product active</span>
+      </div>
+      <div class="quiz-progress-row">
+        <div class="quiz-prog-dot done"></div>
+        <div class="quiz-prog-dot"></div>
+        <div class="quiz-prog-dot"></div>
+      </div>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
       <div class="quiz-screen-label">QUESTION 1 OF 3</div>
       <div class="quiz-title">What's your biggest financial priority right now?</div>
       <div class="quiz-subtitle">This shapes your score and which gaps we flag for you.</div>
     </div>
     <div class="quiz-body">
+<<<<<<< HEAD
       <button class="quiz-option selected" onclick="selectQ1(this,'emergency')"><span class="quiz-option-icon">&#128737;&#65039;</span><div class="quiz-option-text">Building an emergency fund<div class="quiz-option-sub">3&#8211;6 months of expenses covered</div></div></button>
       <button class="quiz-option" onclick="selectQ1(this,'growth')"><span class="quiz-option-icon">&#128200;</span><div class="quiz-option-text">Growing wealth long-term<div class="quiz-option-sub">ETFs, equities, compound growth</div></div></button>
       <button class="quiz-option" onclick="selectQ1(this,'purchase')"><span class="quiz-option-icon">&#127968;</span><div class="quiz-option-text">Saving for a big purchase<div class="quiz-option-sub">Car, home deposit, travel</div></div></button>
@@ -325,10 +837,59 @@
       <button class="quiz-back" onclick="goBack('quiz1')">&#8249;</button>
       <div class="context-strip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span id="q2context">Priority: <strong>Emergency fund</strong></span></div>
       <div class="quiz-progress-row"><div class="quiz-prog-dot done"></div><div class="quiz-prog-dot done"></div><div class="quiz-prog-dot"></div></div>
+=======
+      <button class="quiz-option selected" onclick="selectQ1(this,'emergency')">
+        <span class="quiz-option-icon">🛡️</span>
+        <div class="quiz-option-text">
+          Building an emergency fund
+          <div class="quiz-option-sub">3–6 months of expenses covered</div>
+        </div>
+      </button>
+      <button class="quiz-option" onclick="selectQ1(this,'growth')">
+        <span class="quiz-option-icon">📈</span>
+        <div class="quiz-option-text">
+          Growing wealth long-term
+          <div class="quiz-option-sub">ETFs, equities, compound growth</div>
+        </div>
+      </button>
+      <button class="quiz-option" onclick="selectQ1(this,'purchase')">
+        <span class="quiz-option-icon">🏠</span>
+        <div class="quiz-option-text">
+          Saving for a big purchase
+          <div class="quiz-option-sub">Car, home deposit, travel</div>
+        </div>
+      </button>
+      <button class="quiz-option" onclick="selectQ1(this,'retirement')">
+        <span class="quiz-option-icon">🧓</span>
+        <div class="quiz-option-text">
+          Preparing for retirement
+          <div class="quiz-option-sub">RA, tax-free, long-horizon growth</div>
+        </div>
+      </button>
+      <button class="quiz-cta" onclick="goto('quiz2')">Next →</button>
+    </div>
+  </div>
+
+  <!-- QUIZ 2 — Adaptive (timeline OR age bracket) -->
+  <div class="screen" id="quiz2">
+    <div class="status-bar light" style="background:var(--orange)"><span>13:33</span><div class="status-icons" style="color:white"><div class="battery" style="border-color:white"><div class="battery-fill" style="background:white"></div></div></div></div>
+    <div class="quiz-header">
+      <button class="quiz-back" onclick="goBack('quiz1')">‹</button>
+      <div class="context-strip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span id="q2context">Priority: <strong>Emergency fund</strong></span>
+      </div>
+      <div class="quiz-progress-row">
+        <div class="quiz-prog-dot done"></div>
+        <div class="quiz-prog-dot done"></div>
+        <div class="quiz-prog-dot"></div>
+      </div>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
       <div class="quiz-screen-label">QUESTION 2 OF 3</div>
       <div class="quiz-title" id="q2title">How long do you want to invest for?</div>
       <div class="quiz-subtitle" id="q2subtitle">Helps us recommend the right risk level.</div>
     </div>
+<<<<<<< HEAD
     <div class="quiz-body" id="q2body"></div>
   </div>
 
@@ -338,11 +899,33 @@
       <button class="quiz-back" onclick="goBack('quiz2')">&#8249;</button>
       <div class="context-strip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span id="q3context">Priority: <strong>Emergency fund</strong></span></div>
       <div class="quiz-progress-row"><div class="quiz-prog-dot done"></div><div class="quiz-prog-dot done"></div><div class="quiz-prog-dot done"></div></div>
+=======
+    <div class="quiz-body" id="q2body">
+      <!-- injected by JS -->
+    </div>
+  </div>
+
+  <!-- QUIZ 3 — Monthly surplus -->
+  <div class="screen" id="quiz3">
+    <div class="status-bar light" style="background:var(--orange)"><span>13:33</span><div class="status-icons" style="color:white"><div class="battery" style="border-color:white"><div class="battery-fill" style="background:white"></div></div></div></div>
+    <div class="quiz-header">
+      <button class="quiz-back" onclick="goBack('quiz2')">‹</button>
+      <div class="context-strip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span id="q3context">Priority: <strong>Emergency fund</strong></span>
+      </div>
+      <div class="quiz-progress-row">
+        <div class="quiz-prog-dot done"></div>
+        <div class="quiz-prog-dot done"></div>
+        <div class="quiz-prog-dot done"></div>
+      </div>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
       <div class="quiz-screen-label">QUESTION 3 OF 3</div>
       <div class="quiz-title">How much can you add each month?</div>
       <div class="quiz-subtitle">We'll suggest a realistic starting amount for your next product.</div>
     </div>
     <div class="quiz-body">
+<<<<<<< HEAD
       <button class="quiz-option" onclick="selectQ3(this,'low')"><span class="quiz-option-icon">&#128167;</span><div class="quiz-option-text">Less than R500<div class="quiz-option-sub">Start small, build the habit</div></div></button>
       <button class="quiz-option selected" onclick="selectQ3(this,'mid')"><span class="quiz-option-icon">&#128167;&#128167;</span><div class="quiz-option-text">R500 &#8211; R2,000<div class="quiz-option-sub">Good momentum, room to diversify</div></div></button>
       <button class="quiz-option" onclick="selectQ3(this,'high')"><span class="quiz-option-icon">&#128167;&#128167;&#128167;</span><div class="quiz-option-text">R2,000 &#8211; R5,000<div class="quiz-option-sub">Ready for multiple products</div></div></button>
@@ -376,10 +959,92 @@
           <button class="score-cta" onclick="goto('reco')">See my recommendation &#8594;</button>
         </div>
         <div class="score-breakdown-card"><div class="score-breakdown-title">How your score is calculated</div><div id="breakdown-rows"></div></div>
+=======
+      <button class="quiz-option" onclick="selectQ3(this,'low')">
+        <span class="quiz-option-icon">💧</span>
+        <div class="quiz-option-text">
+          Less than R500
+          <div class="quiz-option-sub">Start small, build the habit</div>
+        </div>
+      </button>
+      <button class="quiz-option selected" onclick="selectQ3(this,'mid')">
+        <span class="quiz-option-icon">💧💧</span>
+        <div class="quiz-option-text">
+          R500 – R2,000
+          <div class="quiz-option-sub">Good momentum, room to diversify</div>
+        </div>
+      </button>
+      <button class="quiz-option" onclick="selectQ3(this,'high')">
+        <span class="quiz-option-icon">💧💧💧</span>
+        <div class="quiz-option-text">
+          R2,000 – R5,000
+          <div class="quiz-option-sub">Ready for multiple products</div>
+        </div>
+      </button>
+      <button class="quiz-option" onclick="selectQ3(this,'vhigh')">
+        <span class="quiz-option-icon">💰</span>
+        <div class="quiz-option-text">
+          More than R5,000
+          <div class="quiz-option-sub">Build a full portfolio fast</div>
+        </div>
+      </button>
+      <button class="quiz-cta" onclick="showScore()">See my Grow Score →</button>
+    </div>
+  </div>
+
+  <!-- SCORE -->
+  <div class="screen" id="score">
+    <div class="status-bar light" style="background:var(--orange)"><span>13:33</span><div class="status-icons" style="color:white"><div class="battery" style="border-color:white"><div class="battery-fill" style="background:white"></div></div></div></div>
+    <div class="score-hero">
+      <button class="score-back" onclick="goBack('quiz3')">‹</button>
+      <div class="score-hero-label">GROW SCORE · MASECHABA</div>
+      <div class="score-hero-name" id="score-hero-name">Your personalised score</div>
+    </div>
+    <div class="score-body">
+      <div style="padding:0 0 16px;">
+        <div class="score-card">
+          <div class="score-ring-wrap">
+            <div class="score-ring">
+              <svg viewBox="0 0 150 150" id="score-ring-svg">
+                <circle cx="75" cy="75" r="62" fill="none" stroke="#F0F2F5" stroke-width="13"/>
+                <circle cx="75" cy="75" r="62" fill="none" stroke="#E84E1B" stroke-width="13"
+                  stroke-dasharray="390" stroke-dashoffset="234" stroke-linecap="round"
+                  id="score-ring-fill"/>
+              </svg>
+              <div class="score-ring-num">
+                <div class="big" id="score-number" style="color:var(--orange)">42</div>
+                <div class="small">/ 100</div>
+              </div>
+            </div>
+            <div class="score-level-badge" id="score-level-badge" style="background:#FEF3C7;color:#92400E;">Getting started</div>
+          </div>
+
+          <!-- personalised insight -->
+          <div class="score-insight">
+            <div class="score-insight-label">💡 INSIGHT FOR YOU</div>
+            <div class="score-insight-text" id="score-insight-text">
+              Your emergency fund is solid — you're protected against the unexpected.
+              The next big unlock for you is <strong>long-term equity growth</strong>, which accounts for 35 of your missing points.
+            </div>
+          </div>
+
+          <div class="gap-list" id="gap-list">
+            <!-- injected by JS -->
+          </div>
+          <button class="score-cta" onclick="goto('reco')">See my recommendation →</button>
+        </div>
+
+        <!-- Score breakdown -->
+        <div class="score-breakdown-card">
+          <div class="score-breakdown-title">How your score is calculated</div>
+          <div id="breakdown-rows"><!-- injected --></div>
+        </div>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
       </div>
     </div>
   </div>
 
+<<<<<<< HEAD
   <div class="screen" id="reco">
     <div class="status-bar" style="background:var(--orange);color:white"><span>13:33</span><div class="status-icons" style="color:white"><div class="battery" style="border-color:white"><div class="battery-fill" style="background:white"></div></div></div></div>
     <div class="reco-hero">
@@ -398,10 +1063,63 @@
           <button class="reco-invest-btn" id="reco-invest-btn" onclick="goto('success')">Add Satrix 40 ETF &#8212; start with R250 &#8594;</button>
         </div>
         <div style="padding:0 16px"><button class="reco-alt-btn">Choose a different amount</button></div>
+=======
+  <!-- RECO -->
+  <div class="screen" id="reco">
+    <div class="status-bar light" style="background:var(--orange)"><span>13:33</span><div class="status-icons" style="color:white"><div class="battery" style="border-color:white"><div class="battery-fill" style="background:white"></div></div></div></div>
+    <div class="reco-hero">
+      <button class="reco-back" onclick="goBack('score')">‹</button>
+      <div class="reco-hero-label">GROW SCORE · RECOMMENDED FOR YOU</div>
+      <div class="reco-hero-title" id="reco-hero-title">Best fit for your goals</div>
+    </div>
+    <div class="reco-body">
+      <div style="padding:0 0 24px;">
+        <div class="reco-card">
+          <div class="reco-match-row">
+            <div class="reco-match-badge" id="reco-match-badge">⭐ 98% match</div>
+            <div class="reco-match-pct" id="reco-match-pct">98%</div>
+          </div>
+          <div class="reco-product-row">
+            <div class="reco-product-icon" id="reco-product-icon">📊</div>
+            <div>
+              <div class="reco-product-name" id="reco-product-name">Satrix 40 ETF</div>
+              <div class="reco-product-type" id="reco-product-type">Long-term growth · Passive index</div>
+            </div>
+          </div>
+
+          <!-- WHY THIS FOR YOU — fully personalised -->
+          <div class="why-you-box">
+            <div class="why-you-label">✦ WHY THIS FOR YOU, MASECHABA</div>
+            <div class="why-you-text" id="why-you-text">
+              You picked <strong>long-term growth</strong> as your priority and have a
+              <strong>5+ year horizon</strong> — that's exactly the sweet spot for equity ETFs.
+              With R500–R2,000 per month, you can build meaningful exposure without stretching.
+            </div>
+          </div>
+
+          <div class="reco-facts" id="reco-facts"><!-- injected --></div>
+
+          <div class="reco-amount-row">
+            <div>
+              <div class="reco-amount-label">Suggested starting amount</div>
+              <div class="reco-amount-sub" id="reco-amount-sub">Based on your R500–R2,000 monthly surplus</div>
+            </div>
+            <div style="text-align:right">
+              <div class="reco-amount-val" id="reco-amount-val">R 250</div>
+            </div>
+          </div>
+
+          <button class="reco-invest-btn" id="reco-invest-btn" onclick="goto('post-deposit')">Add Satrix 40 ETF — start with R250 →</button>
+        </div>
+        <div style="padding:0 16px;">
+          <button class="reco-alt-btn">Choose a different amount</button>
+        </div>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
       </div>
     </div>
   </div>
 
+<<<<<<< HEAD
   <!-- SUCCESS — step 8, end of quiz flow -->
   <div class="screen" id="success">
     <div class="status-bar"><span>13:33</span><div class="status-icons"><div class="battery"><div class="battery-fill"></div></div></div></div>
@@ -415,10 +1133,39 @@
         <div class="sd-new"><div class="sd-num" id="sd-new-num" style="color:var(--green-dark)">67</div><div class="sd-delta" id="sd-delta">&#8593; +25 pts</div><div class="sd-lbl">Your Grow Score</div></div>
       </div>
       <div class="next-step-card"><div class="next-step-label">YOUR PORTFOLIO NOW</div><div id="next-step-items"></div></div>
+=======
+  <!-- SUCCESS -->
+  <div class="screen" id="success">
+    <div class="status-bar"><span>13:33</span><div class="status-icons"><div class="battery"><div class="battery-fill"></div></div></div></div>
+    <div class="success-wrap">
+      <div class="success-emoji">🎉</div>
+      <div class="success-title" id="success-title">Satrix ETF added!</div>
+      <div class="success-sub" id="success-sub">Your first R250 is now invested and growing for your future.</div>
+
+      <div class="score-delta-card">
+        <div class="sd-old">
+          <div class="sd-num" id="sd-old-num" style="color:var(--grey)">42</div>
+          <div class="sd-lbl">Before</div>
+        </div>
+        <div class="sd-arrow">→</div>
+        <div class="sd-new">
+          <div class="sd-num" id="sd-new-num" style="color:var(--green-dark)">67</div>
+          <div class="sd-delta" id="sd-delta">↑ +25 pts</div>
+          <div class="sd-lbl">Your Grow Score</div>
+        </div>
+      </div>
+
+      <div class="next-step-card">
+        <div class="next-step-label">YOUR PORTFOLIO NOW</div>
+        <div id="next-step-items"><!-- injected --></div>
+      </div>
+
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
       <button class="success-cta" onclick="goto('home')">View my portfolio</button>
     </div>
   </div>
 
+<<<<<<< HEAD
   <!-- POST-DEPOSIT — step 9, separate deposit flow -->
   <div class="screen" id="post-deposit">
     <div class="status-bar"><span>13:42</span><div class="status-icons"><div class="battery"><div class="battery-fill"></div></div><span style="font-size:11px;font-weight:700">100</span></div></div>
@@ -445,10 +1192,60 @@
         </div>
         <button onclick="goto('home')" style="width:100%;padding:16px;background:#FDE8E0;color:var(--orange);border:none;border-radius:16px;font-size:15px;font-weight:700;cursor:pointer">Go to my portfolio</button>
         <div style="height:24px"></div>
+=======
+
+  <!-- POST-DEPOSIT GROW SCORE SCREEN -->
+  <div class="screen" id="post-deposit">
+    <div class="status-bar"><span>13:42</span><div class="status-icons"><div class="battery"><div class="battery-fill"></div></div><span style="font-size:11px;font-weight:700">100</span></div></div>
+    <div class="scroll-area">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:36px 24px 0;text-align:center;">
+
+        <!-- Confetti illustration -->
+        <div style="width:160px;height:140px;background:#E8F9F5;border-radius:50% 60% 50% 60%;display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:72px;position:relative;">
+          🎉
+          <span style="position:absolute;top:10px;right:10px;font-size:18px;">✨</span>
+          <span style="position:absolute;bottom:14px;left:14px;font-size:16px;">🟠</span>
+        </div>
+
+        <div style="font-size:26px;font-weight:800;color:var(--dark);margin-bottom:10px;">You're all done!</div>
+        <div style="font-size:14px;color:var(--grey);line-height:1.6;margin-bottom:32px;max-width:280px;">
+          We will update your investment as soon as your deposit reflects in our accounts. This can take a few days to process.
+        </div>
+
+        <!-- Grow Score nudge card — new -->
+        <div onclick="goto('score')" style="width:100%;background:var(--orange);border-radius:18px;padding:18px 20px;margin-bottom:12px;cursor:pointer;text-align:left;transition:transform 0.12s;position:relative;overflow:hidden;" onmousedown="this.style.transform='scale(0.98)'" onmouseup="this.style.transform='none'">
+          <div style="position:absolute;top:-20px;right:-20px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,0.07);"></div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <div style="background:rgba(255,255,255,0.2);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">📈</div>
+            <div style="font-size:15px;font-weight:800;color:white;">Check your Grow Score</div>
+          </div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.5;margin-bottom:14px;">
+            This deposit improved your score, Masechaba. See what your portfolio is still missing — and what to add next.
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;gap:8px;">
+              <div style="background:rgba(255,255,255,0.2);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700;color:white;">
+                📊 Score: 42 → 50+
+              </div>
+            </div>
+            <div style="background:white;color:var(--orange);font-size:13px;font-weight:700;padding:8px 16px;border-radius:10px;white-space:nowrap;">
+              See score →
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary CTA -->
+        <button onclick="goto('home')" style="width:100%;padding:16px;background:#FDE8E0;color:var(--orange);border:none;border-radius:16px;font-size:15px;font-weight:700;cursor:pointer;">
+          Go to my portfolio
+        </button>
+
+        <div style="height:24px;"></div>
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
       </div>
     </div>
   </div>
 
+<<<<<<< HEAD
 </div>
 
 <script>
@@ -592,6 +1389,332 @@ function renderSuccess(){
 }
 
 setTimeout(()=>goto('home'),1800);
+=======
+</div><!-- /phone -->
+
+<script>
+// ── State ──────────────────────────────────────────────────────────
+const state = {
+  priority: 'emergency',   // emergency | growth | purchase | retirement
+  timeline: 'medium',      // short | medium | long | vlong (or age: young | mid | senior)
+  surplus: 'mid',          // low | mid | high | vhigh
+};
+
+// ── Navigation ──────────────────────────────────────────────────────
+const STEP_MAP = {
+  splash: 'step-splash', home: 'step-home',
+  quiz1: 'step-quiz1', quiz2: 'step-quiz2', quiz3: 'step-quiz3',
+  score: 'step-score', reco: 'step-reco', 'post-deposit': 'step-post-deposit', success: 'step-success'
+};
+
+function goto(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active','slide-in','slide-back'));
+  const next = document.getElementById(id);
+  next.classList.add('active','slide-in');
+  setTimeout(() => next.classList.remove('slide-in'), 300);
+  const sa = next.querySelector('.scroll-area, .score-body, .reco-body, .success-wrap');
+  if (sa) sa.scrollTop = 0;
+  updateSidePanel(id);
+  if (id === 'quiz2') renderQ2();
+  if (id === 'score') renderScore();
+  if (id === 'reco') renderReco();
+  if (id === 'success') renderSuccess();
+}
+
+function goBack(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active','slide-in','slide-back'));
+  const next = document.getElementById(id);
+  next.classList.add('active','slide-back');
+  setTimeout(() => next.classList.remove('slide-back'), 300);
+  updateSidePanel(id);
+}
+
+function updateSidePanel(id) {
+  document.querySelectorAll('.side-step').forEach(s => s.classList.remove('active'));
+  const key = STEP_MAP[id];
+  if (key) document.getElementById(key)?.classList.add('active');
+}
+
+// ── Quiz selections ──────────────────────────────────────────────────
+function selectQ1(el, val) {
+  document.querySelectorAll('#quiz1 .quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.priority = val;
+}
+
+function selectQ3(el, val) {
+  document.querySelectorAll('#quiz3 .quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.surplus = val;
+}
+
+// ── Adaptive Q2 ───────────────────────────────────────────────────────
+const PRIORITY_LABELS = {
+  emergency: 'Emergency fund', growth: 'Long-term growth',
+  purchase: 'Big purchase', retirement: 'Retirement'
+};
+
+function renderQ2() {
+  const p = state.priority;
+  const label = PRIORITY_LABELS[p];
+  document.getElementById('q2context').innerHTML = `Priority: <strong>${label}</strong>`;
+  document.getElementById('q3context').innerHTML = `Priority: <strong>${label}</strong>`;
+
+  const body = document.getElementById('q2body');
+  let title, subtitle, opts;
+
+  if (p === 'retirement') {
+    title = 'How old are you?';
+    subtitle = 'Your age shapes how aggressively we can grow your retirement pot.';
+    opts = [
+      { val:'young', icon:'🌱', label:'Under 30', sub:'30+ years to retirement — full equity exposure' },
+      { val:'mid',   icon:'📅', label:'30 – 45',  sub:'15–30 years — balanced growth strategy' },
+      { val:'senior',icon:'🏔️', label:'45 – 55',  sub:'10–15 years — capital preservation matters' },
+      { val:'late',  icon:'🧓', label:'55+',       sub:'Preservation-focused, income generating' },
+    ];
+  } else if (p === 'purchase') {
+    title = 'When do you need the money?';
+    subtitle = 'Short timelines need capital protection, not equity risk.';
+    opts = [
+      { val:'short',  icon:'⚡', label:'Less than 1 year',  sub:'Stay in money market — protect your capital' },
+      { val:'medium', icon:'📅', label:'1 – 3 years',       sub:'Low-risk blend — some growth, some safety' },
+      { val:'long',   icon:'🌱', label:'3 – 5 years',       sub:'Moderate equity exposure makes sense' },
+      { val:'vlong',  icon:'🏔️', label:'More than 5 years', sub:'You can afford to ride out market swings' },
+    ];
+  } else {
+    title = 'How long do you want to invest for?';
+    subtitle = 'Longer horizons unlock higher-growth, higher-risk products.';
+    opts = [
+      { val:'short',  icon:'⚡', label:'Less than 1 year',  sub:'Capital preservation is the priority' },
+      { val:'medium', icon:'📅', label:'1 – 5 years',       sub:'Balanced approach works well here' },
+      { val:'long',   icon:'🌱', label:'5 – 10 years',      sub:'Good fit for equity ETFs' },
+      { val:'vlong',  icon:'🏔️', label:'10+ years',         sub:'Maximum growth potential' },
+    ];
+  }
+
+  document.getElementById('q2title').textContent = title;
+  document.getElementById('q2subtitle').textContent = subtitle;
+
+  const defaultVal = p === 'retirement' ? 'mid' : (p === 'purchase' ? 'medium' : 'long');
+  state.timeline = defaultVal;
+
+  body.innerHTML = opts.map((o, i) => `
+    <button class="quiz-option ${o.val === defaultVal ? 'selected' : ''}" onclick="selectQ2(this,'${o.val}')">
+      <span class="quiz-option-icon">${o.icon}</span>
+      <div class="quiz-option-text">
+        ${o.label}
+        <div class="quiz-option-sub">${o.sub}</div>
+      </div>
+    </button>
+  `).join('') + `<button class="quiz-cta" onclick="goto('quiz3')">Next →</button>`;
+}
+
+function selectQ2(el, val) {
+  document.querySelectorAll('#quiz2 .quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.timeline = val;
+}
+
+// ── Score calculation ─────────────────────────────────────────────────
+function calcScore() {
+  const { priority, timeline, surplus } = state;
+  // Base: they have 1 product (money market)
+  let score = 30;
+  const gaps = [];
+  const breakdown = [];
+
+  // Emergency buffer — they have it
+  breakdown.push({ label: 'Emergency buffer', earned: 30, max: 30 });
+  gaps.push({ ok: true, label: 'Emergency buffer', sub: 'Allan Gray Money Market · covered' });
+
+  // Long-term growth gap
+  const needsGrowth = ['growth','retirement'].includes(priority) || ['long','vlong','mid'].includes(timeline);
+  if (needsGrowth) {
+    const pts = timeline === 'vlong' ? 35 : timeline === 'long' ? 30 : 20;
+    breakdown.push({ label: 'Long-term growth', earned: 0, max: pts });
+    gaps.push({ ok: false, label: 'Long-term growth (ETF)', sub: `${pts} pts available — your biggest unlock` });
+  } else {
+    breakdown.push({ label: 'Long-term growth', earned: 0, max: 20 });
+    gaps.push({ ok: false, label: 'Long-term growth (ETF)', sub: 'Less urgent for your timeline' });
+  }
+
+  // Offshore exposure
+  const needsOffshore = ['growth','retirement'].includes(priority);
+  breakdown.push({ label: 'Offshore exposure', earned: 0, max: 20 });
+  gaps.push({ ok: false, label: 'Offshore exposure', sub: needsOffshore ? '20 pts — unlocks after your first ETF' : 'Available when you\'re ready' });
+
+  // TFSA — relevant for retirement
+  if (priority === 'retirement') {
+    breakdown.push({ label: 'Tax-free savings (TFSA)', earned: 0, max: 20 });
+    gaps.push({ ok: false, label: 'Tax-free savings (TFSA)', sub: '20 pts — critical for retirement planning' });
+    score = 25; // lower because more gaps revealed
+  }
+
+  const total = breakdown.reduce((a, b) => a + b.max, 0);
+  const earned = breakdown.reduce((a, b) => a + b.earned, 0);
+  score = Math.round((earned / total) * 100);
+
+  return { score, gaps, breakdown, total, earned };
+}
+
+function showScore() { goto('score'); }
+
+function renderScore() {
+  const { score, gaps, breakdown } = calcScore();
+  const { priority, timeline } = state;
+
+  // Ring
+  const circ = 390;
+  const offset = circ - (circ * score / 100);
+  document.getElementById('score-ring-fill').setAttribute('stroke-dashoffset', offset);
+  document.getElementById('score-number').textContent = score;
+
+  // Level badge
+  const badge = document.getElementById('score-level-badge');
+  if (score < 40) { badge.style.background='#FEE2E2'; badge.style.color='#DC2626'; badge.textContent='Needs attention'; }
+  else if (score < 55) { badge.style.background='#FEF3C7'; badge.style.color='#92400E'; badge.textContent='Getting started'; }
+  else if (score < 75) { badge.style.background='#DBEAFE'; badge.style.color='#1E40AF'; badge.textContent='Building well'; }
+  else { badge.style.background=`var(--green-light)`; badge.style.color='var(--green-dark)'; badge.textContent='Strong portfolio'; }
+
+  // Hero label
+  const priorityLabelMap = { emergency:'emergency fund focus', growth:'long-term growth focus', purchase:'saving for a goal', retirement:'retirement focus' };
+  document.getElementById('score-hero-name').textContent = `Grow Score · ${priorityLabelMap[priority]}`;
+
+  // Personalised insight
+  const insightMap = {
+    emergency: `Your emergency fund is solid — you're protected. The next unlock for you is <strong>long-term equity growth</strong>, which accounts for the largest share of your missing points.`,
+    growth: `With your <strong>long-term horizon</strong>, equity ETFs could add up to 35 points to your score and give your money the best chance to compound.`,
+    purchase: timeline === 'short'
+      ? `For your <strong>short timeline</strong>, preserving capital is the priority. A second money market product gives you flexibility without risk.`
+      : `Your timeline gives you room to grow. A <strong>diversified ETF</strong> alongside your savings could boost your score significantly.`,
+    retirement: `<strong>Retirement planning</strong> needs more products working together. A tax-free account (TFSA) would have the biggest impact on your score right now.`,
+  };
+  document.getElementById('score-insight-text').innerHTML = insightMap[priority];
+
+  // Gaps
+  const gapHTML = gaps.map(g => `
+    <div class="gap-item">
+      <div class="gap-check ${g.ok ? 'ok' : 'missing'}">${g.ok ? '✓' : '✗'}</div>
+      <div class="gap-item-label">
+        <div>${g.label}</div>
+        <div class="gap-item-sub">${g.sub}</div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('gap-list').innerHTML = gapHTML;
+
+  // Breakdown bars
+  const totalMax = breakdown.reduce((a, b) => a + b.max, 0);
+  const bHTML = breakdown.map(b => `
+    <div class="breakdown-row">
+      <div class="breakdown-label">${b.label}</div>
+      <div class="breakdown-bar-bg">
+        <div class="breakdown-bar-fill" style="width:${Math.round(b.earned/b.max*100)}%; background:${b.earned > 0 ? 'var(--green)' : 'var(--grey-light)'}"></div>
+      </div>
+      <div class="breakdown-val" style="color:${b.earned > 0 ? 'var(--green-dark)' : 'var(--grey)'}">
+        ${b.earned}/${b.max}
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('breakdown-rows').innerHTML = bHTML;
+}
+
+// ── Recommendation ────────────────────────────────────────────────────
+function renderReco() {
+  const { priority, timeline, surplus } = state;
+
+  const surplusAmounts = { low: 'R50', mid: 'R250', high: 'R500', vhigh: 'R1,000' };
+  const surplusLabels  = { low: 'Under R500', mid: 'R500–R2,000', high: 'R2,000–R5,000', vhigh: 'R5,000+' };
+  const amount = surplusAmounts[surplus];
+
+  // Product selection
+  let product, icon, type, match, facts, whyYou, heroTitle;
+
+  if (priority === 'retirement') {
+    product = 'TFSA (Tax-Free)'; icon = '🏦'; type = 'Tax-free savings · Up to R36k/year'; match = '99%';
+    heroTitle = 'Your retirement needs this first';
+    whyYou = `You chose <strong>retirement</strong> as your priority — a TFSA is the single most impactful move you can make right now. Every rand grows tax-free for life, which matters enormously over <strong>${timeline === 'young' ? '30+' : '15–30'} years</strong>.`;
+    facts = [
+      { icon:'🛡️', text:'All growth and withdrawals are 100% tax-free' },
+      { icon:'💸', text: 'Start with as little as ' + amount + '/month' },
+      { icon:'📅', text:'Contributions up to R36,000 per year' },
+      { icon:'🔒', text:'FSCA regulated and protected' },
+    ];
+  } else if (priority === 'purchase' && ['short','medium'].includes(timeline)) {
+    product = 'Allan Gray Money Market'; icon = '🏦'; type = 'Capital preservation · Low risk'; match = '97%';
+    heroTitle = 'Protect your capital, grow steadily';
+    whyYou = `With your <strong>short timeline</strong>, the priority is protecting what you've saved. A second Money Market pot keeps your purchase savings separate and earns competitive interest with no market risk.`;
+    facts = [
+      { icon:'🛡️', text:'Capital protected — no market volatility risk' },
+      { icon:'📈', text:'Better returns than a bank savings account' },
+      { icon:'💸', text: 'Start with ' + amount + '/month' },
+      { icon:'⚡', text:'Access your funds at any time' },
+    ];
+  } else {
+    product = 'Satrix 40 ETF'; icon = '📊'; type = 'Long-term growth · Passive index'; match = '98%';
+    heroTitle = `Built for your ${timeline === 'vlong' ? '10+ year' : '5+ year'} horizon`;
+    const horizonDesc = timeline === 'vlong' ? 'more than 10 years' : timeline === 'long' ? '5–10 years' : '3–5 years';
+    whyYou = `You chose <strong>${PRIORITY_LABELS[priority].toLowerCase()}</strong> with a horizon of <strong>${horizonDesc}</strong> — that's exactly the sweet spot for equity ETFs. With <strong>${surplusLabels[surplus]}</strong> per month, you can build meaningful exposure without stretching.`;
+    facts = [
+      { icon:'📈', text:"Tracks SA's top 40 companies — diversified from day one" },
+      { icon:'💸', text: 'Start with just ' + amount + '/month' },
+      { icon:'📅', text:`Best for ${horizonDesc}` },
+      { icon:'🔒', text:'Managed by Satrix · FSCA regulated' },
+      { icon:'💰', text:'Low cost · 0.1% annual fee' },
+    ];
+  }
+
+  document.getElementById('reco-hero-title').textContent = heroTitle;
+  document.getElementById('reco-match-badge').textContent = `⭐ ${match} match for your goals`;
+  document.getElementById('reco-match-pct').textContent = match;
+  document.getElementById('reco-product-icon').textContent = icon;
+  document.getElementById('reco-product-name').textContent = product;
+  document.getElementById('reco-product-type').textContent = type;
+  document.getElementById('why-you-text').innerHTML = whyYou;
+  document.getElementById('reco-amount-val').textContent = amount;
+  document.getElementById('reco-amount-sub').textContent = `Based on your ${surplusLabels[surplus]}/month surplus`;
+  document.getElementById('reco-invest-btn').textContent = `Add ${product} — start with ${amount} →`;
+  document.getElementById('reco-facts').innerHTML = facts.map(f =>
+    `<div class="reco-fact"><span class="reco-fact-icon">${f.icon}</span>${f.text}</div>`
+  ).join('');
+}
+
+// ── Success ────────────────────────────────────────────────────────────
+function renderSuccess() {
+  const { priority, timeline, surplus } = state;
+  const { score } = calcScore();
+  const newScore = Math.min(score + 25, 100);
+  const delta = newScore - score;
+
+  const surplusAmounts = { low: 'R50', mid: 'R250', high: 'R500', vhigh: 'R1,000' };
+  const amount = surplusAmounts[surplus];
+
+  let productName = priority === 'retirement' ? 'TFSA' :
+                    (priority === 'purchase' && ['short','medium'].includes(timeline)) ? 'Money Market pot' :
+                    'Satrix 40 ETF';
+
+  document.getElementById('success-title').textContent = `${productName} added!`;
+  document.getElementById('success-sub').textContent = `Your first ${amount} is invested and working for your future.`;
+  document.getElementById('sd-old-num').textContent = score;
+  document.getElementById('sd-new-num').textContent = newScore;
+  document.getElementById('sd-delta').textContent = `↑ +${delta} pts`;
+
+  const items = [
+    { icon:'✅', text:'Emergency buffer — covered', cls:'earned' },
+    { icon:'✅', text:`${productName} — just added`, cls:'earned' },
+    priority === 'retirement'
+      ? { icon:'🔒', text:'Offshore exposure — unlock next month', cls:'locked' }
+      : { icon:'🔒', text:'Offshore exposure — unlock next month', cls:'locked' },
+  ];
+
+  document.getElementById('next-step-items').innerHTML = items.map(it =>
+    `<div class="next-step-item ${it.cls}"><span class="ns-icon">${it.icon}</span>${it.text}</div>`
+  ).join('');
+}
+
+// Splash auto-advance
+setTimeout(() => goto('home'), 1800);
+>>>>>>> c91a5ea0ec6804f4ec71a3c2a2a8bbd41443a4ed
 </script>
 </body>
 </html>
